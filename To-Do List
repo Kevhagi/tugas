@@ -1,4 +1,16 @@
 Edit dikit tampilan index
-Tambahin pengiriman (ada edit database)
+  >"Inventory Admin" di pojok kiri atas -> Logo + "JS Admin"
+Tambahin fitur Pengiriman
+  >Tambahkan table di database
+  >Tambahkan code di index.php
+  >Buat isi page=pengiriman
+  >Buat isi page=tambahpengiriman
 Tambahin laporan stok
-Ganti judul laporan pembelian & penjualan (printoutnya)
+  >Tambahkan code di index.php
+  >Buat isi page=laporanstock
+  >Tambahkan code cetaklaporanstock
+Perbaiki code cetaklaporanpembelian
+  >"Cetak Laporan Penjualan" -> "Cetak Laporan Pembelian"
+  
+(*Lakukan paling terakhir*) Kalau bisa bagus, kalau gabisa gapapa
+Ubah login email jadi login username
