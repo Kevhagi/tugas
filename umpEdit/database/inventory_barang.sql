@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `kd_admin` int(6) NOT NULL AUTO_INCREMENT,
   `nama` varchar(60) NOT NULL,
-  `email` varchar(60) NOT NULL,
+  `username` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
   `gambar` varchar(225) NOT NULL,
   PRIMARY KEY (`kd_admin`)
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`kd_admin`, `nama`, `email`, `password`, `gambar`) VALUES
+INSERT INTO `admin` (`kd_admin`, `nama`, `username`, `password`, `gambar`) VALUES
 (5, 'Putra', 'saputra2@gmail.com', 'admin', '1330353508976947169.jpg'),
 (6, 'admin', 'admin@admin.com', 'admin', 'team1.jpg'),
 (7, 'Mas Poetra', 'admin2@admin.com', 'admin2', '141204-201433.jpg');
