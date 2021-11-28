@@ -22,24 +22,24 @@
 
   <div class="content">
     <section class="stark-login">
-    <form method="POST">	
+    <form method="POST">
       <div id="fade-box">
-        <input type="text" name="username" id="username" placeholder="Masukan Email" required>
+        <input type="text" name="username" id="username" placeholder="Masukan Username" required>
         <input type="password" name="password" placeholder="Masukan Password" required>
-        <button name="login">Log In</button> 
+        <button name="login">Log In</button>
       </div>
-    </form>  
+    </form>
     </section>
   </div>
 
   <div class = "footer">
-    Copyright &copy; 2021 - Pachiko Software House    
+    Copyright &copy; 2021 - Pachiko Software House
   </div>
 
 </div>
 </body>
 </html>
-<?php  
+<?php
 include "../class/class.php";
   if (isset($_POST['login'])) {
     $cek = $admin->login_admin($_POST['username'],$_POST['password']);
@@ -47,7 +47,7 @@ include "../class/class.php";
       echo "<script>window.location='../index.php';</script>";
     }//jika salah atau tidak benar maka login ulang
     else{
-      echo "<script>alert('Login Gagal, Password / Email Salah!');</script>";
+      echo "<script>alert('Login Gagal, Password / Username Salah!');</script>";
     }
   }
 ?>
