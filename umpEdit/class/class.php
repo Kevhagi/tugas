@@ -1,4 +1,4 @@
-<?php  
+<?php
 	session_start();
 	//set jam
 	date_default_timezone_set('Asia/Jakarta');
@@ -16,14 +16,14 @@
 	//membuat class admin
 	class Admin{
 		//method insert data admin
-		public function simpan_admin($email,$pass,$nama,$gambar){
+		public function simpan_admin($username,$pass,$nama,$gambar){
 			$namafile = $gambar['name'];
 			//lokasi sementara
 			$lokasifile = $gambar['tmp_name'];
 			//upload
 			move_uploaded_file($lokasifile, "gambar_admin/$namafile");
 			//insert
-			mysql_query("INSERT INTO admin(email,password,nama,gambar) VALUES('$email','$pass','$nama','$namafile')");
+			mysql_query("INSERT INTO admin(username,password,nama,gambar) VALUES('$username','$pass','$nama','$namafile')");
 		}
 		public function tampil_admin(){
 			$qry = mysql_query("SELECT * FROM admin");
@@ -38,7 +38,7 @@
 			$pecah = mysql_fetch_assoc($qry);
 			return $pecah;
 		}
-		public function ubah_admin($email,$pass,$nama,$gambar,$id){
+		public function ubah_admin($username,$pass,$nama,$gambar,$id){
 			$namafile = $gambar['name'];
 			$lokasifile = $gambar['tmp_name'];
 			//mengambil nama gambar sebelumnya untuk di hapus, akan di hapus
@@ -51,13 +51,13 @@
 				//upload gambar baru
 				move_uploaded_file($lokasifile, "gambar_admin/$namafile");
 				//update
-				mysql_query("UPDATE admin 
-					SET email = '$email', password='$pass', nama='$nama', gambar='$namafile' WHERE kd_admin='$id'");
+				mysql_query("UPDATE admin
+					SET username = '$username', password='$pass', nama='$nama', gambar='$namafile' WHERE kd_admin='$id'");
 			}
 			else{
 				//update tanpa upload gambar
-				mysql_query("UPDATE admin 
-					SET email = '$email', password='$pass', nama='$nama' WHERE kd_admin='$id'");
+				mysql_query("UPDATE admin
+					SET username = '$username', password='$pass', nama='$nama' WHERE kd_admin='$id'");
 			}
 		}
 		public function hapus_admin($hapus){
@@ -68,9 +68,9 @@
 			unlink("gambar_admin/$namagbr");
 			mysql_query("DELETE FROM admin WHERE kd_admin= '$hapus'");
 		}
-		public function login_admin($email,$pass){
+		public function login_admin($username,$pass){
 			// mencocokan data di db dengan username dan pass yang di inputkan
-			$cek = mysql_query("SELECT * FROM admin WHERE email='$email' AND password='$pass'");
+			$cek = mysql_query("SELECT * FROM admin WHERE username='$username' AND password='$pass'");
 			//mengambil data orang yang login dan cocok
 			$data = mysql_fetch_assoc($cek);
 			// hitung data yang cocok
@@ -79,7 +79,7 @@
 			if ($cocokan > 0) {
 				//bisa login
 				$_SESSION['login_admin']['id'] = $data['kd_admin'];
-				$_SESSION['login_admin']['email'] = $data['email'];
+				$_SESSION['login_admin']['username'] = $data['username'];
 				$_SESSION['login_admin']['nama'] = $data['nama'];
 				$_SESSION['login_admin']['gambar'] = $data['gambar'];
 
@@ -99,7 +99,7 @@
 			return $data;
 		}
 		public function simpan_barang($kdbarang,$nama,$satuan,$hargaj,$hargab,$stok){
-			mysql_query("INSERT INTO barang(kd_barang,nama_barang,satuan,harga_jual,harga_beli,stok) 
+			mysql_query("INSERT INTO barang(kd_barang,nama_barang,satuan,harga_jual,harga_beli,stok)
 				VALUES('$kdbarang','$nama','$satuan','$hargaj','$hargab','$stok')");
 		}
 		public function ubah_barang($nama,$satuan,$hargaj,$hargab,$stok,$kd){
@@ -120,7 +120,7 @@
 			$satuan = $dat['satuan'];
 			$hargab = $dat['harga_beli'];
 			$stok = $dat['item'];
-			mysql_query("INSERT INTO barang(kd_barang,nama_barang,satuan,harga_jual,harga_beli,stok) 
+			mysql_query("INSERT INTO barang(kd_barang,nama_barang,satuan,harga_jual,harga_beli,stok)
 				VALUES('$kdbarang','$nama','$satuan','$hargaj','$hargab','$stok')");
 			//update data barang pembelian dengan setatus 1
 			mysql_query("UPDATE barang_pembelian SET status='1' WHERE kd_barang_beli ='$kdbl'");
@@ -195,7 +195,7 @@
 		//sementara
 		public function tambah_barang_sementara($kode,$nama,$satuan,$hargab,$item){
 			$tot = $item * $hargab;
-			mysql_query("INSERT INTO barangp_sementara(kd_pembelian,nama_barangp, satuan,harga_barangp,item,total) 
+			mysql_query("INSERT INTO barangp_sementara(kd_pembelian,nama_barangp, satuan,harga_barangp,item,total)
 				VALUES('$kode','$nama','$satuan','$hargab','$item','$tot')");
 		}
 		public function tampil_barang_sementara($kode){
@@ -240,14 +240,14 @@
 		public function simpan_pembelian($kdpembelian,$tglpembelian,$supplier,$totalpem){
 			//insert pembelian
 			$kdadmin = $_SESSION['login_admin']['id'];
-			mysql_query("INSERT INTO pembelian(kd_pembelian,tgl_pembelian,kd_admin,kd_supplier,total_pembelian) 
+			mysql_query("INSERT INTO pembelian(kd_pembelian,tgl_pembelian,kd_admin,kd_supplier,total_pembelian)
 				VALUES('$kdpembelian','$tglpembelian','$kdadmin','$supplier','$totalpem')");
-			
+
 			//insert data barang
-			mysql_query("INSERT INTO barang_pembelian(kd_pembelian,nama_barang_beli,satuan,harga_beli,item,total) 
+			mysql_query("INSERT INTO barang_pembelian(kd_pembelian,nama_barang_beli,satuan,harga_beli,item,total)
 				SELECT kd_pembelian,nama_barangp,satuan,harga_barangp,item,total FROM barangp_sementara");
 			//insert detail pembelian
-			mysql_query("INSERT INTO d_pembelian(kd_pembelian,kd_barang_beli,jumlah,subtotal) 
+			mysql_query("INSERT INTO d_pembelian(kd_pembelian,kd_barang_beli,jumlah,subtotal)
 				SELECT kd_pembelian, kd_barang_beli,item,total FROM barang_pembelian WHERE kd_pembelian='$kdpembelian'");
 			//hapus data barang pembelian sementara
 			mysql_query("DELETE FROM barangp_sementara WHERE kd_pembelian='$kdpembelian'");
@@ -263,7 +263,7 @@
 			}
 			else{
 				error_reporting(0);
-			}	
+			}
 		}
 		public function ambil_kdpem(){
 			$qry = mysql_query("SELECT * FROM pembelian ORDER BY kd_pembelian DESC LIMIT 1");
@@ -359,7 +359,7 @@
 			$satuan = $bar['satuan'];
 			$harga = $bar['harga_jual'];
 			$total = $harga * $item;
-			mysql_query("INSERT INTO penjualan_sementara(kd_penjualan, kd_barang, nama_barang, satuan, harga, item, total) 
+			mysql_query("INSERT INTO penjualan_sementara(kd_penjualan, kd_barang, nama_barang, satuan, harga, item, total)
 				VALUES('$kdpen', '$kdbarang','$namabr','$satuan','$harga','$item','$total')");
 			// update barang
 			$kurang = $bar['stok'] - $item;
@@ -398,11 +398,11 @@
 		public function simpan_penjualan($kdpenjualan,$tglpen,$ttlbayar,$subtotal){
 			//insert penjualan
 			$kdadmin = $_SESSION['login_admin']['id'];
-			mysql_query("INSERT INTO penjualan(kd_penjualan,tgl_penjualan,kd_admin,dibayar,total_penjualan) 
+			mysql_query("INSERT INTO penjualan(kd_penjualan,tgl_penjualan,kd_admin,dibayar,total_penjualan)
 				VALUES('$kdpenjualan','$tglpen','$kdadmin','$ttlbayar','$subtotal')");
-			
+
 			//insert d penjualan
-			mysql_query("INSERT INTO d_penjualan(kd_penjualan,kd_barang,jumlah,subtotal) 
+			mysql_query("INSERT INTO d_penjualan(kd_penjualan,kd_barang,jumlah,subtotal)
 				SELECT kd_penjualan, kd_barang,item,total FROM penjualan_sementara WHERE kd_penjualan='$kdpenjualan'");
 			//hapus semua penjualan sementera
 			mysql_query("DELETE FROM penjualan_sementara WHERE kd_penjualan = '$kdpenjualan'");
@@ -430,13 +430,13 @@
 	}
 	class Nota{
 		public function tampil_nota_pembelian($kd){
-			$qry = mysql_query("SELECT * FROM supplier sup 
+			$qry = mysql_query("SELECT * FROM supplier sup
 				JOIN pembelian pem ON pem.kd_supplier = sup.kd_supplier
 				JOIN admin adm ON adm.kd_admin = pem.kd_admin
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
 				JOIN barang_pembelian bpem ON dpem.kd_barang_beli = bpem.kd_barang_beli
 				WHERE pem.kd_pembelian = '$kd'");
-			
+
 			while ($pecah = mysql_fetch_array($qry)) {
 				$data[]=$pecah;
 			}
@@ -446,10 +446,10 @@
 			}
 			else{
 				error_reporting(0);
-			}	
+			}
 		}
 		public function ambil_nota_pembelian($kd){
-			$qry = mysql_query("SELECT * FROM supplier sup 
+			$qry = mysql_query("SELECT * FROM supplier sup
 				JOIN pembelian pem ON pem.kd_supplier = sup.kd_supplier
 				JOIN admin adm ON adm.kd_admin = pem.kd_admin
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
@@ -473,7 +473,7 @@
 			}
 			else{
 				error_reporting(0);
-			}	
+			}
 		}
 		public function ambil_nota_penjualan($kd){
 			$qry = mysql_query("SELECT * FROM penjualan pen
@@ -489,7 +489,7 @@
 		public function tampil_penjualan_bulan($bln1,$bln2){
 			$qry = mysql_query("SELECT * FROM penjualan pen
 				JOIN d_penjualan dpen ON pen.kd_penjualan = dpen.kd_penjualan
-				JOIN barang bar ON dpen.kd_barang = bar.kd_barang 
+				JOIN barang bar ON dpen.kd_barang = bar.kd_barang
 				WHERE pen.tgl_penjualan BETWEEN '$bln1' AND '$bln2'");
 			while ($pecah = mysql_fetch_array($qry)) {
 				$data[]=$pecah;
@@ -565,7 +565,7 @@
 			$qry = mysql_query("SELECT * FROM supplier sup
 				JOIN pembelian pem ON sup.kd_supplier = pem.kd_supplier
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
-				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli 
+				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli
 				WHERE pem.tgl_pembelian BETWEEN '$bln1' AND '$bln2'");
 			while ($pecah = mysql_fetch_array($qry)) {
 				$data[]=$pecah;
@@ -582,7 +582,7 @@
 			$qry = mysql_query("SELECT * FROM supplier sup
 				JOIN pembelian pem ON sup.kd_supplier = pem.kd_supplier
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
-				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli 
+				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli
 				WHERE pem.tgl_pembelian BETWEEN '$bln1' AND '$bln2'");
 			$hitung = mysql_num_rows($qry);
 			if ($hitung >=1) {
@@ -596,7 +596,7 @@
 			$qry = mysql_query("SELECT sum(dpem.subtotal) as jumlah FROM supplier sup
 				JOIN pembelian pem ON sup.kd_supplier = pem.kd_supplier
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
-				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli 
+				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli
 				WHERE pem.tgl_pembelian BETWEEN '$bln1' AND '$bln2'");
 			$pecah = mysql_fetch_array($qry);
 			$subtotal = $pecah['jumlah'];
@@ -642,7 +642,7 @@
 		}
 		//end pembelian
 		public function hitung_profit_bulan(){
-			
+
 		}
 		public function hitung_profit_semua(){
 
@@ -652,7 +652,7 @@
 		public function laporan_penjualan_bulan($bln1,$bln2){
 			$qry = mysql_query("SELECT * FROM penjualan pen
 				JOIN d_penjualan dpen ON pen.kd_penjualan = dpen.kd_penjualan
-				JOIN barang bar ON dpen.kd_barang = bar.kd_barang 
+				JOIN barang bar ON dpen.kd_barang = bar.kd_barang
 				WHERE pen.tgl_penjualan BETWEEN '$bln1' AND '$bln2'");
 			while ($pecah = mysql_fetch_array($qry)) {
 				$data[]=$pecah;
@@ -684,7 +684,7 @@
 			$qry = mysql_query("SELECT * FROM supplier sup
 				JOIN pembelian pem ON sup.kd_supplier = pem.kd_supplier
 				JOIN d_pembelian dpem ON pem.kd_pembelian = dpem.kd_pembelian
-				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli 
+				JOIN barang_pembelian barpem ON dpem.kd_barang_beli = barpem.kd_barang_beli
 				WHERE pem.tgl_pembelian BETWEEN '$bln1' AND '$bln2'");
 			while ($pecah = mysql_fetch_array($qry)) {
 				$data[]=$pecah;
