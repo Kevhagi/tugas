@@ -12,7 +12,7 @@
 
   <div class="header">
       <div class="JS-logo">
-          <img src = "logo_js.png">
+          <img src = "css/logo_js.png">
         <div class="JS-title">
             <h1 id = "JuanComps">JuanComps</h1>
             <h4 id = "tagline">Best service for best people</h4>

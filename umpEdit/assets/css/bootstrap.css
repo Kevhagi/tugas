@@ -3986,8 +3986,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-brand:focus {
   text-decoration: none;
 }
-.navbar-brand > img {
-  display: block;
+.navbar-brand img{
+ display:inline-block; 
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

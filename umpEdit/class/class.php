@@ -6,7 +6,7 @@
 		private $host = "localhost";
 		private $user = "root";
 		private $pass = "";
-		private $db = "inventory_db";
+		private $db = "test";
 
 		public function sambungkan(){
 			mysql_connect($this->host,$this->user,$this->pass);

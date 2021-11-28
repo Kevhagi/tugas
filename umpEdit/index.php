@@ -44,7 +44,10 @@
             <span class="icon-bar"></span>    
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">JS Admin</a> 
+        <a class="navbar-brand" href="index.php">
+          <img src= "5.jpg" width="30" height="30" class="d-inline-block-align-top" alt>
+          JS Admin
+        </a> 
       </div>
       <div style="color: white;padding: 15px 20px 15px 20px;float: right;font-size: 16px;"> 
         <span style="margin-right:20px"><?php echo tglIndonesia(date('D, d F, Y')); ?></span>

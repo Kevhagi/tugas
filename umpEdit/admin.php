@@ -18,7 +18,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Email</th>
+                                <th>Username</th>
                                
                                 <th>Foto</th>
                                 <th>Aksi</th>
@@ -32,7 +32,7 @@
                             <tr class="odd gradeX">
                                 <td><?php echo $index + 1; ?></td>
                                 <td><?php echo $data['nama']; ?></td>
-                                <td><?php echo $data['email']; ?></td>
+                                <td><?php echo $data['username']; ?></td>
                                
                                 <td>
                                     <img src="gambar_admin/<?php echo $data['gambar']; ?>" width="90">

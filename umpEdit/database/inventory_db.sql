@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 27, 2021 at 02:58 PM
+-- Generation Time: Nov 28, 2021 at 11:45 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `inventory_db`
+-- Database: `test`
 --
 
 -- --------------------------------------------------------
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `admin` (
   `kd_admin` int(6) NOT NULL AUTO_INCREMENT,
   `nama` varchar(60) NOT NULL,
-  `email` varchar(60) NOT NULL,
+  `username` varchar(60) NOT NULL,
   `password` varchar(60) NOT NULL,
   `gambar` varchar(225) NOT NULL,
   PRIMARY KEY (`kd_admin`)
@@ -39,13 +39,13 @@ CREATE TABLE IF NOT EXISTS `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`kd_admin`, `nama`, `email`, `password`, `gambar`) VALUES
-(6, 'hendi', 'hendi@gmail.com', 'hendi', '2.jpg'),
-(8, 'juan', 'juan@gmail.com', 'juan', '4.jpg'),
-(9, 'octa', 'octa@gmail.com', 'octa', '3.jpg'),
-(10, 'anstem', 'anstem@gmail.com', 'anstem', '6.jpg'),
-(11, 'kepin', 'kepin@gmail.com', 'kepin', '7.png'),
-(12, 'surya', 'surya@gmail.com', 'surya', '5.jpg');
+INSERT INTO `admin` (`kd_admin`, `nama`, `username`, `password`, `gambar`) VALUES
+(6, 'hendi', 'hendi', 'hendi', '2.jpg'),
+(8, 'juan', 'juan', 'juan', '4.jpg'),
+(9, 'octa', 'octa', 'octa', '3.jpg'),
+(10, 'anstem', 'anstem', 'anstem', '6.jpg'),
+(11, 'kepin', 'kepin', 'kepin', '7.png'),
+(12, 'surya', 'surya', 'surya', '5.jpg');
 
 -- --------------------------------------------------------
 

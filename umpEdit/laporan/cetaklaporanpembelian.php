@@ -89,7 +89,7 @@ $namaper = $per['nama_perusahaan'];
 $alamat = $per['alamat'];
 $pemilik = $per['pemilik'];
 $kota = $per['kota'];
-$judul_H = "CETAK BUKTI PENJUALAN <br>";
+$judul_H = "CETAK BUKTI PEMBELIAN <br>";
 $tgl = date('d-m-Y');
 function myheader($judul_H,$namaper,$alamat){
 echo  "<div class='header' align='center'>
