@@ -11,6 +11,3 @@ Perbaiki code cetaklaporanpembelian
   >"Cetak Laporan Penjualan" -> "Cetak Laporan Pembelian"
 Dump & Upload database terbaru
   ^Ada tambahan tabel "pengiriman"
-  
-~~(*Lakukan paling terakhir*) Kalau bisa bagus, kalau gabisa gapapa
-Ubah login email jadi login username~~
