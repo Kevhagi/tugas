@@ -1,5 +1,3 @@
-Edit dikit tampilan index
-  >"Inventory Admin" di pojok kiri atas -> Logo + "JS Admin"
 Tambahin fitur Pengiriman
   >Selesaikan page=tambahresi
   >Perbaiki urutan data page=pengiriman
@@ -7,7 +5,5 @@ Tambahin laporan stok
   >Tambahkan code di index.php
   >Buat isi page=laporanstock
   >Tambahkan code cetaklaporanstock
-Perbaiki code cetaklaporanpembelian
-  >"Cetak Laporan Penjualan" -> "Cetak Laporan Pembelian"
 Dump & Upload database terbaru
   ^Ada tambahan tabel "pengiriman"
