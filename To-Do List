@@ -12,5 +12,5 @@ Perbaiki code cetaklaporanpembelian
 Dump & Upload database terbaru
   ^Ada tambahan tabel "pengiriman"
   
-(*Lakukan paling terakhir*) Kalau bisa bagus, kalau gabisa gapapa
-Ubah login email jadi login username
+~~(*Lakukan paling terakhir*) Kalau bisa bagus, kalau gabisa gapapa
+Ubah login email jadi login username~~
