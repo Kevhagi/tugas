@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12">
-    <h2>Inventory Barang</h2>   
-    <h5>Welcome to Inventory Barang App. </h5>
+    <h2>Inventory Juan Store</h2>   
+    <h5>Wellcome to Invotory Juan Store</h5>
   </div>
 </div>
 <hr />
