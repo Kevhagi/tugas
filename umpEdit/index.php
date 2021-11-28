@@ -19,7 +19,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory Barang</title>
+    <title>Inventory Juan Store</title>
   <!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>    
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.php">Inventory Admin</a> 
+        <a class="navbar-brand" href="index.php">JS Admin</a> 
       </div>
       <div style="color: white;padding: 15px 20px 15px 20px;float: right;font-size: 16px;"> 
         <span style="margin-right:20px"><?php echo tglIndonesia(date('D, d F, Y')); ?></span>
