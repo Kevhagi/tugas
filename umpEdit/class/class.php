@@ -6,7 +6,7 @@
 		private $host = "localhost";
 		private $user = "root";
 		private $pass = "";
-		private $db = "test";
+		private $db = "test2";
 
 		public function sambungkan(){
 			mysql_connect($this->host,$this->user,$this->pass);
@@ -737,6 +737,40 @@
 			return $hitung;
 		}
 	}
+	class Pengiriman{
+		public function tampil_pengiriman(){
+			$qry = mysql_query("SELECT * FROM pengiriman ORDER BY kd_penjualan DESC");
+			while ($pecah = mysql_fetch_array($qry)) {
+				$data[]=$pecah;
+			}
+			$hitung = mysql_num_rows($qry);
+			if ($hitung > 0) {
+				return $data;
+			}
+			else{
+				error_reporting(0);
+			}
+		}
+		public function simpan_pengiriman($kdpenjualan,$kdresi,$ekspedisi,$tglinputresi){
+			//insert pengiriman
+			$kdadmin = $_SESSION['login_admin']['id'];
+			mysql_query("INSERT INTO pengiriman(kd_penjualan,kd_resi,kd_admin,ekspedisi,tgl_inputresi) 
+				VALUES('$kdpenjualan','$kdresi','$kdadmin','$ekspedisi','$tglinputresi')");
+		}
+		public function tampil_penjualan(){
+			$qry = mysql_query("SELECT * FROM penjualan WHERE kd_penjualan NOT IN (SELECT kd_penjualan FROM pengiriman)");
+			while ($pecah = mysql_fetch_array($qry)) {
+				$data[]=$pecah;
+			}
+			$hitung = mysql_num_rows($qry);
+			if ($hitung > 0) {
+				return $data;
+			}
+			else{
+				error_reporting(0);
+			}
+		}
+	}
 	$DataBase = new DataBase();
 	$DataBase->sambungkan();
 	$admin = new Admin();
@@ -749,4 +783,5 @@
 	$cetaklaporan =  new Cetak_Laporan();
 	$perusahaan = new Perusahaan();
 	$dashboard = new Dashboard();
+	$pengiriman = new Pengiriman();
 ?>

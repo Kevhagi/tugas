@@ -96,7 +96,7 @@
                 <a href="index.php?page=pengiriman"><i class="fa fa-database"></i> Data Pengiriman</a>
               </li>
               <li>
-                <a href="index.php?page=tambahpengiriman"><i class="fa fa-plus-square"></i> Tambah Resi</a>
+                <a href="index.php?page=tambahresi"><i class="fa fa-plus-square"></i> Tambah Resi</a>
               </li>
             </ul>
           </li>
@@ -197,6 +197,12 @@
             }
             elseif ($_GET['page']=="perusahaan") {
               include 'perusahaan.php';
+            }
+            elseif ($_GET['page']=="pengiriman") {
+              include 'pengiriman.php';
+            }
+            elseif ($_GET['page']=="tambahresi") {
+              include 'tambahresi.php';
             }
             elseif ($_GET['page']=="logout") {
               session_destroy();
