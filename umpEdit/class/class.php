@@ -6,7 +6,7 @@
 		private $host = "localhost";
 		private $user = "root";
 		private $pass = "";
-		private $db = "test2";
+		private $db = "inventory_db";
 
 		public function sambungkan(){
 			mysql_connect($this->host,$this->user,$this->pass);
@@ -736,6 +736,12 @@
 			$hitung = mysql_num_rows($qry);
 			return $hitung;
 		}
+		public function pengiriman_hariini(){
+			$hari = date("Y-m-d");
+				$qry = mysql_query("SELECT * FROM pengiriman WHERE tgl_inputresi = '$hari'");
+				$hitung = mysql_num_rows($qry);
+				return $hitung;
+			}
 	}
 	class Pengiriman{
 		public function tampil_pengiriman(){

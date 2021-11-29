@@ -45,8 +45,7 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="index.php">
-          <img src= "5.jpg" width="30" height="30" class="d-inline-block-align-top" alt>
-          JS Admin
+          <img src= "logo.png" width="30" height="30" class="d-inline-block-align-top" alt>JS Admin
         </a> 
       </div>
       <div style="color: white;padding: 15px 20px 15px 20px;float: right;font-size: 16px;"> 

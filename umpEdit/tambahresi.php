@@ -32,7 +32,7 @@
 					</div>
 					<div class="form-group">
 						<label>Nama Ekspedisi</label>
-						<input type="text" class="form-control" id="ekspedisi" name="ekspedisi" required>
+						<input type="text" class="form-control" id="ekspedisi" name="ekspedisi" style="text-transform:uppercase" required>
 					</div>
                     <div class="form-group">
                         <label>Tanggal Input Resi</label>
