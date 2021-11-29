@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2021 at 11:45 AM
+-- Generation Time: Nov 29, 2021 at 07:22 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `test`
+-- Database: `inventory_db`
 --
 
 -- --------------------------------------------------------
@@ -192,6 +192,22 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
 
 INSERT INTO `pembelian` (`kd_pembelian`, `tgl_pembelian`, `kd_admin`, `kd_supplier`, `total_pembelian`) VALUES
 ('PEM00001', '2016-03-13', 6, 4, 35600000);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pengiriman`
+--
+
+CREATE TABLE IF NOT EXISTS `pengiriman` (
+  `kd_penjualan` char(8) CHARACTER SET latin1 NOT NULL,
+  `kd_resi` varchar(20) NOT NULL,
+  `kd_admin` int(6) NOT NULL,
+  `ekspedisi` varchar(20) NOT NULL,
+  `tgl_inputresi` date NOT NULL,
+  PRIMARY KEY (`kd_penjualan`),
+  KEY `kd_admin` (`kd_admin`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
