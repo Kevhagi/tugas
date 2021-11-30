@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2021 at 07:22 AM
+-- Generation Time: Nov 30, 2021 at 04:58 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -69,9 +69,7 @@ CREATE TABLE IF NOT EXISTS `barang` (
 --
 
 INSERT INTO `barang` (`kd_barang`, `nama_barang`, `satuan`, `harga_jual`, `harga_beli`, `stok`, `status`) VALUES
-('BB000001', 'Barang 1', 'PCS', 200000, 180000, 50, '0'),
-('BB000002', 'Barang 2', 'DUS', 340000, 300000, 12, '0'),
-('BB000003', 'Buku 1', 'DUS', 450000, 400000, 75, '0');
+('MSIRTX01', 'MSI RTX 3090', 'UNIT', 31999999, 29000000, 9, '0');
 
 -- --------------------------------------------------------
 
@@ -107,15 +105,14 @@ CREATE TABLE IF NOT EXISTS `barang_pembelian` (
   `total` double NOT NULL,
   `status` enum('1','0') NOT NULL DEFAULT '0',
   PRIMARY KEY (`kd_barang_beli`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=109 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=110 ;
 
 --
 -- Dumping data for table `barang_pembelian`
 --
 
 INSERT INTO `barang_pembelian` (`kd_barang_beli`, `kd_pembelian`, `nama_barang_beli`, `satuan`, `harga_beli`, `item`, `total`, `status`) VALUES
-(106, 'PEM00001', 'Buku 1', 'DUS', 400000, 80, 32000000, '1'),
-(107, 'PEM00001', 'Buku 2', 'DUS', 120000, 30, 3600000, '0');
+(109, 'PEM00001', 'MSI RTX 3090', 'UNIT', 29000000, 10, 290000000, '1');
 
 -- --------------------------------------------------------
 
@@ -134,15 +131,14 @@ CREATE TABLE IF NOT EXISTS `d_pembelian` (
   KEY `kd_pembelian_2` (`kd_pembelian`),
   KEY `kd_barang_beli` (`kd_barang_beli`),
   KEY `kd_barang_beli_2` (`kd_barang_beli`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=162 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=163 ;
 
 --
 -- Dumping data for table `d_pembelian`
 --
 
 INSERT INTO `d_pembelian` (`id_pembelian`, `kd_pembelian`, `kd_barang_beli`, `jumlah`, `subtotal`) VALUES
-(159, 'PEM00001', 106, 80, 32000000),
-(160, 'PEM00001', 107, 30, 3600000);
+(162, 'PEM00001', 109, 10, 290000000);
 
 -- --------------------------------------------------------
 
@@ -160,14 +156,14 @@ CREATE TABLE IF NOT EXISTS `d_penjualan` (
   KEY `kd_penjualan` (`kd_penjualan`),
   KEY `kd_barang` (`kd_barang`),
   KEY `kd_barang_2` (`kd_barang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=67 ;
 
 --
 -- Dumping data for table `d_penjualan`
 --
 
 INSERT INTO `d_penjualan` (`id_penjualan`, `kd_penjualan`, `kd_barang`, `jumlah`, `subtotal`) VALUES
-(55, 'PEN00001', 'BB000003', 5, 2250000);
+(66, 'PEN00001', 'MSIRTX01', 1, 31999999);
 
 -- --------------------------------------------------------
 
@@ -191,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `pembelian` (
 --
 
 INSERT INTO `pembelian` (`kd_pembelian`, `tgl_pembelian`, `kd_admin`, `kd_supplier`, `total_pembelian`) VALUES
-('PEM00001', '2016-03-13', 6, 4, 35600000);
+('PEM00001', '2021-11-30', 8, 5, 290000000);
 
 -- --------------------------------------------------------
 
@@ -208,6 +204,13 @@ CREATE TABLE IF NOT EXISTS `pengiriman` (
   PRIMARY KEY (`kd_penjualan`),
   KEY `kd_admin` (`kd_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `pengiriman`
+--
+
+INSERT INTO `pengiriman` (`kd_penjualan`, `kd_resi`, `kd_admin`, `ekspedisi`, `tgl_inputresi`) VALUES
+('PEN00001', 'jne012345', 8, 'jne', '2021-11-30');
 
 -- --------------------------------------------------------
 
@@ -230,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `penjualan` (
 --
 
 INSERT INTO `penjualan` (`kd_penjualan`, `tgl_penjualan`, `kd_admin`, `dibayar`, `total_penjualan`) VALUES
-('PEN00001', '2016-03-13', 6, 2260000, 2250000);
+('PEN00001', '2021-11-30', 8, 32000000, 31999999);
 
 -- --------------------------------------------------------
 
@@ -248,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `penjualan_sementara` (
   `item` int(4) NOT NULL,
   `total` double NOT NULL,
   PRIMARY KEY (`id_penjualan_sementara`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
@@ -284,16 +287,16 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `nama_supplier` varchar(60) NOT NULL,
   `alamat` varchar(60) NOT NULL,
   PRIMARY KEY (`kd_supplier`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`kd_supplier`, `nama_supplier`, `alamat`) VALUES
-(1, 'Toko Anjas', 'condong catur, sleman'),
-(3, 'TB Agus Hokya', 'Kuningan, Bandung Barat Selatan Ke Utara'),
-(4, 'Toko Putra', 'jl. merdeka, boyolali, jakarta selatan');
+(5, 'Eternal Asia', 'Mangga Dua Mall Lt. 4 Blok A.11'),
+(6, 'Astra Electronics', 'TangCity Mall Blok C.15'),
+(7, 'Dimensi Data', 'Victoria Park Office Blok H.69');
 
 --
 -- Constraints for dumped tables
