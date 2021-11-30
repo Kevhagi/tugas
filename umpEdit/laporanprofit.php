@@ -15,7 +15,7 @@
 				<input type="date" id="tgl2" class="form-control" name="tgl2">
 			</div>
 			<div class="form-group">
-				<button id="formbtn" name="prosess" class="btn btn-primary"><i class="fa fa-play-circle-o"></i> Prosess</button>
+				<button id="formbtn" name="proses" class="btn btn-primary"><i class="fa fa-play-circle-o"></i> Proses</button>
 				<button class="btn btn-success" name="semua"><i class="fa fa-play-circle-o"></i> Semua Data</button>
 			</div>
 		</form>
@@ -26,13 +26,13 @@
 	<div class="col-md-12">
 		<div class="panel panel-default">
 			<div class="panel-heading" align="center">
-				<?php if (isset($_POST['prosess'])): ?>
+				<?php if (isset($_POST['proses'])): ?>
 					<a href="laporan/cetaklaporanprofit.php?tgl1=<?php echo $_POST['tgl1']; ?>&tgl2=<?php echo $_POST['tgl2']; ?>" target="_BLANK" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
 				<?php endif ?>
 				<?php if (isset($_POST['semua'])): ?>
 					<a href="laporan/cetaklaporanprofit.php?semua" target="_BLANK" class="btn btn-info"><i class="fa fa-print"></i> Cetak</a>
 				<?php endif ?>
-				<?php if (!isset($_POST['prosess']) && !isset($_POST['semua'])): ?>
+				<?php if (!isset($_POST['proses']) && !isset($_POST['semua'])): ?>
 					<a href="#" class="btn btn-info" disabled="disabled"><i class="fa fa-print"></i> Cetak</a>
 				<?php endif ?>
 			</div>
@@ -53,7 +53,7 @@
 					</thead>
 					<tbody>
 					<?php  
-						if (isset($_POST['prosess'])) {
+						if (isset($_POST['proses'])) {
 								$total = "";
 							$cek = $laporan->cek_penjualan_bulan($_POST['tgl1'],$_POST['tgl2']);
 							if ($cek === false) {

@@ -203,6 +203,9 @@
             elseif ($_GET['page']=="tambahresi") {
               include 'tambahresi.php';
             }
+            elseif ($_GET['page']=="laporanstock") {
+              include 'laporanstock.php';
+            }
             elseif ($_GET['page']=="logout") {
               session_destroy();
               echo "<script>location='login/';</script>";
