@@ -93,3 +93,19 @@
             </div>
         </div>
         <!--End Advanced Tables -->
+<script>
+	//upper
+	$(function(){
+		$('#kdresi').focusout(function() {
+        	// Uppercase-ize contents
+        	this.value = this.value.toLocaleUpperCase();
+    	});
+	});
+    $(function(){
+		$('#ekspedisi').focusout(function() {
+        	// Uppercase-ize contents
+        	this.value = this.value.toLocaleUpperCase();
+    	});
+	});
+</script>
+
