@@ -3,7 +3,7 @@
         <!-- Advanced Tables -->
         <div class="panel panel-default">
             <div class="panel-heading">
-                Data Pembelian
+                Data Penjualan
             </div>
             <div class="panel-body">
                 <div class="table">

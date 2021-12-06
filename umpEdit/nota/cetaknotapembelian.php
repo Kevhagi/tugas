@@ -1,6 +1,7 @@
 <?php
 	include "../class/class.php";
 	$tam = $nota->ambil_nota_pembelian($_GET['kdpembelian']);
+  $per = $perusahaan->tampil_perusahaan();
 ?>
 
 <style type="text/css">
@@ -46,7 +47,7 @@
       <div align="center">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <td width="69%" rowspan="3" valign="top" class="style19b">PT SUKSES SELALU</td>
+            <td width="69%" rowspan="3" valign="top" class="style19b"><?php echo $per['nama_perusahaan']; ?></td>
             <td colspan="3"><div align="center" class="style9b">
               <div align="left" class="style19b"><strong><u>FAKTUR PEMBELIAN</u></strong></div>
             </div></td>
