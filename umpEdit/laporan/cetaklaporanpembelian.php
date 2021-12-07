@@ -89,7 +89,7 @@ $namaper = $per['nama_perusahaan'];
 $alamat = $per['alamat'];
 $pemilik = $per['pemilik'];
 $kota = $per['kota'];
-$judul_H = "CETAK BUKTI PEMBELIAN <br>";
+$judul_H = "LAPORAN PEMBELIAN <br>";
 $tgl = date('d-m-Y');
 function myheader($judul_H,$namaper,$alamat){
 echo  "<div class='header' align='center'>
@@ -108,7 +108,7 @@ echo  "<div class='header' align='center'>
 			<th>Jumlah</th>
 			<th>Harga</th>
 			<th>Total</th>
-		</tr>";		
+		</tr>";
 }
 function myfooter(){
 	echo "</table>";
@@ -145,7 +145,7 @@ function myfooter(){
 			echo "<tr><td colspan='8' align='center'><b>Total</b></td><td><b>Rp. ".number_format($gtotal)."</td></tr>";
 		myfooter();
 	echo "<div class='footer'>
-			<div>Yogyakarta, ".date('d-m-Y')."</div>
+			<div>$kota, ".date('d-m-Y')."</div>
 			<div style='margin-top:90px; margin-right:5px;'>$pemilik</div>
 		</div>";
 	echo "<div class='page' align='center'>Hal - ".$page."</div>";
