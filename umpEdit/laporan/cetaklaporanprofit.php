@@ -88,7 +88,7 @@ $namaper = $per['nama_perusahaan'];
 $alamat = $per['alamat'];
 $pemilik = $per['pemilik'];
 $kota = $per['kota'];
-$judul_H = "CETAK LAPORAN KEUNTUNGAN <br>";
+$judul_H = "LAPORAN KEUNTUNGAN <br>";
 $tgl = date('d-m-Y');
 function myheader($judul_H,$namaper,$alamat){
 echo  "<div class='header'>
@@ -107,7 +107,7 @@ echo  "<div class='header'>
 			<th>Harga Beli</th>
 			<th>Harga Jual</th>
 			<th>Profit</th>
-		</tr>";		
+		</tr>";
 }
 function myfooter(){
 	echo "</table>";
