@@ -11,7 +11,7 @@
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 }
 .cetak{
-  margin-top:40px; 
+  margin-top:40px;
   text-align:center;
 }
 @media print{
@@ -68,7 +68,7 @@
             <br/><p class="par"><?php echo $per['alamat']; ?></p>
             </td>
             <td colspan="3"><div align="center" class="style9b">
-              <div align="left" class="style19b"><strong><u>NOTA PEMBELIAN</u></strong></div>
+              <div align="left" class="style19b"><strong><u>NOTA PENJUALAN</u></strong></div>
             </div></td>
             </tr>
           <tr>
@@ -92,7 +92,7 @@
   <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td colspan="7">
-      <hr />      
+      <hr />
       </td>
     </tr>
     <tr>
@@ -110,7 +110,7 @@
       </tr>
       <?php
       	$tampil = $nota->tampil_nota_penjualan($_GET['kdpenjualan']);
-		foreach ($tampil as $index => $data){	
+		foreach ($tampil as $index => $data){
 	  ?>
       <tr>
         <td class="style9" align="center"><?php echo $index + 1;?>.</td>
@@ -127,34 +127,34 @@
       <hr />      </td>
       </tr>
   </table>
- 
+
   <table width="98%" align="center">
-   
+
     <tr>
       <td colspan="6" align="right" class="st_total">TOTAL</td>
-      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp. 
+      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp.
       <?php echo number_format($tam['total_penjualan']); ?>
       </div></td>
     </tr>
     <tr>
       <td colspan="6" align="right" class="st_total">DIBAYAR</td>
-      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp. 
+      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp.
       <?php echo number_format($tam['dibayar']); ?>
       </div></td>
     </tr>
-    <?php  
+    <?php
       $kembali = $tam['dibayar'] - $tam['total_penjualan'];
     ?>
     <tr>
       <td colspan="6" align="right" class="st_total">KEMBALI</td>
-      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp. 
+      <td width="200" align="right"><div id="total" class="st_total" align="right">Rp.
       <?php echo number_format($kembali); ?>
       </div></td>
     </tr>
 
 
   </table>
-  
+
    <table width="98%" border="0" align="center">
    <tr>
      <td colspan="3">&nbsp;</td>
