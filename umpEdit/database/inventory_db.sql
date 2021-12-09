@@ -40,12 +40,12 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`kd_admin`, `nama`, `username`, `password`, `gambar`) VALUES
-(6, 'hendi', 'hendi', 'hendi', '2.jpg'),
-(8, 'juan', 'juan', 'juan', '4.jpg'),
-(9, 'octa', 'octa', 'octa', '3.jpg'),
-(10, 'anstem', 'anstem', 'anstem', '6.jpg'),
-(11, 'kepin', 'kepin', 'kepin', '7.png'),
-(12, 'surya', 'surya', 'surya', '5.jpg');
+(6, 'hendi', 'hendi', 'hendi', 'Male.png'),
+(8, 'juan', 'juan', 'juan', 'Male.png'),
+(9, 'octa', 'octa', 'octa', 'Male.png'),
+(10, 'anstem', 'anstem', 'anstem', 'Male.png'),
+(11, 'kepin', 'kepin', 'kepin', 'Male.png'),
+(12, 'surya', 'surya', 'surya', 'Male.png');
 
 -- --------------------------------------------------------
 
